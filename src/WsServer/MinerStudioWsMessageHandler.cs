@@ -39,16 +39,6 @@ namespace NTMiner {
                         WsRoot.OperationMqSender.SendGetSpeed(loginName, minerIds);
                     }
                 },
-                [WsMessage.EnableRemoteDesktop] = (loginName, message) => {
-                    if (message.TryGetData(out WrapperClientId wrapperClientId)) {
-                        WsRoot.OperationMqSender.SendEnableRemoteDesktop(loginName, wrapperClientId.ClientId);
-                    }
-                },
-                [WsMessage.BlockWAU] = (loginName, message) => {
-                    if (message.TryGetData(out WrapperClientId wrapperClientId)) {
-                        WsRoot.OperationMqSender.SendBlockWAU(loginName, wrapperClientId.ClientId);
-                    }
-                },
                 [WsMessage.SetVirtualMemory] = (loginName, message) => {
                     if (message.TryGetData(out WrapperClientIdData wrapperClientIdData) && wrapperClientIdData.TryGetData(out Dictionary<string, int> data)) {
                         WsRoot.OperationMqSender.SendSetVirtualMemory(loginName, wrapperClientIdData.ClientId, data);
@@ -82,21 +72,6 @@ namespace NTMiner {
                 [WsMessage.SaveGpuProfilesJson] = (loginName, message) => {
                     if (message.TryGetData(out WrapperClientIdData wrapperClientData) && wrapperClientData.TryGetData(out string json)) {
                         WsRoot.OperationMqSender.SendSaveGpuProfilesJson(loginName, wrapperClientData.ClientId, json);
-                    }
-                },
-                [WsMessage.SetAutoBootStart] = (loginName, message) => {
-                    if (message.TryGetData(out WrapperClientIdData wrapperClientData) && wrapperClientData.TryGetData(out SetAutoBootStartRequest body)) {
-                        WsRoot.OperationMqSender.SendSetAutoBootStart(loginName, wrapperClientData.ClientId, body);
-                    }
-                },
-                [WsMessage.RestartWindows] = (loginName, message) => {
-                    if (message.TryGetData(out WrapperClientId wrapperClientId)) {
-                        WsRoot.OperationMqSender.SendRestartWindows(loginName, wrapperClientId.ClientId);
-                    }
-                },
-                [WsMessage.ShutdownWindows] = (loginName, message) => {
-                    if (message.TryGetData(out WrapperClientId wrapperClientId)) {
-                        WsRoot.OperationMqSender.SendShutdownWindows(loginName, wrapperClientId.ClientId);
                     }
                 },
                 [WsMessage.UpgradeNTMiner] = (loginName, message) => {

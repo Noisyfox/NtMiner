@@ -146,28 +146,6 @@ namespace NTMiner.Core.Mq.Senders.Impl {
                 body: OperationMqBodyUtil.GetGetSpeedMqSendBody(clientIds));
         }
 
-        public void SendEnableRemoteDesktop(string loginName, Guid clientId) {
-            if (string.IsNullOrEmpty(loginName) || clientId == Guid.Empty) {
-                return;
-            }
-            _serverConnection.MqChannel.BasicPublish(
-                exchange: MqKeyword.NTMinerExchange,
-                routingKey: WsMqKeyword.EnableRemoteDesktopRoutingKey,
-                basicProperties: CreateBasicProperties(loginName, clientId),
-                body: _emptyBody);
-        }
-
-        public void SendBlockWAU(string loginName, Guid clientId) {
-            if (string.IsNullOrEmpty(loginName) || clientId == Guid.Empty) {
-                return;
-            }
-            _serverConnection.MqChannel.BasicPublish(
-                exchange: MqKeyword.NTMinerExchange,
-                routingKey: WsMqKeyword.BlockWAURoutingKey,
-                basicProperties: CreateBasicProperties(loginName, clientId),
-                body: _emptyBody);
-        }
-
         public void SendSwitchRadeonGpu(string loginName, Guid clientId, bool on) {
             if (string.IsNullOrEmpty(loginName) || clientId == Guid.Empty) {
                 return;
@@ -265,39 +243,6 @@ namespace NTMiner.Core.Mq.Senders.Impl {
                 routingKey: WsMqKeyword.SaveGpuProfilesJsonRoutingKey,
                 basicProperties: CreateBasicProperties(loginName, clientId),
                 body: OperationMqBodyUtil.GetSaveGpuProfilesJsonMqSendBody(json));
-        }
-
-        public void SendSetAutoBootStart(string loginName, Guid clientId, SetAutoBootStartRequest body) {
-            if (string.IsNullOrEmpty(loginName) || clientId == Guid.Empty) {
-                return;
-            }
-            _serverConnection.MqChannel.BasicPublish(
-                exchange: MqKeyword.NTMinerExchange,
-                routingKey: WsMqKeyword.SetAutoBootStartRoutingKey,
-                basicProperties: CreateBasicProperties(loginName, clientId),
-                body: OperationMqBodyUtil.GetSetAutoBootStartMqSendBody(body));
-        }
-
-        public void SendRestartWindows(string loginName, Guid clientId) {
-            if (string.IsNullOrEmpty(loginName) || clientId == Guid.Empty) {
-                return;
-            }
-            _serverConnection.MqChannel.BasicPublish(
-                exchange: MqKeyword.NTMinerExchange,
-                routingKey: WsMqKeyword.RestartWindowsRoutingKey,
-                basicProperties: CreateBasicProperties(loginName, clientId),
-                body: _emptyBody);
-        }
-
-        public void SendShutdownWindows(string loginName, Guid clientId) {
-            if (string.IsNullOrEmpty(loginName) || clientId == Guid.Empty) {
-                return;
-            }
-            _serverConnection.MqChannel.BasicPublish(
-                exchange: MqKeyword.NTMinerExchange,
-                routingKey: WsMqKeyword.ShutdownWindowsRoutingKey,
-                basicProperties: CreateBasicProperties(loginName, clientId),
-                body: _emptyBody);
         }
 
         public void SendUpgradeNTMiner(string loginName, Guid clientId, string ntminerFileName) {

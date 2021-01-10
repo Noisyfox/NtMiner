@@ -223,17 +223,6 @@ namespace NTMiner {
         }
     }
 
-    #region toolbox
-    [MessageType(description: "禁用win10系统更新")]
-    public class BlockWAUCommand : Cmd {
-        public BlockWAUCommand() { }
-    }
-
-    [MessageType(description: "优化window10")]
-    public class Win10OptimizeCommand : Cmd {
-        public Win10OptimizeCommand() { }
-    }
-
     [MessageType(description: "开起A卡计算模式")]
     public class SwitchRadeonGpuCommand : Cmd {
         public SwitchRadeonGpuCommand(bool on) {
@@ -274,7 +263,6 @@ namespace NTMiner {
     public class UnRegCmdHereCommand : Cmd {
         public UnRegCmdHereCommand() { }
     }
-    #endregion
 
     #region profile Messages
     [MessageType(description: "MinerProfile设置变更后")]

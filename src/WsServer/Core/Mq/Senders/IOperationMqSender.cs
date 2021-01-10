@@ -26,8 +26,6 @@ namespace NTMiner.Core.Mq.Senders {
 
         void SendGetSpeed(string loginName, List<Guid> clientIds);
 
-        void SendEnableRemoteDesktop(string loginName, Guid clientId);
-        void SendBlockWAU(string loginName, Guid clientId);
         void SendSwitchRadeonGpu(string loginName, Guid clientId, bool on);
         void SendSetVirtualMemory(string loginName, Guid clientId, Dictionary<string, int> datas);
         void SendSetLocalIps(string loginName, Guid clientId, List<LocalIpInput> datas);
@@ -39,12 +37,6 @@ namespace NTMiner.Core.Mq.Senders {
         void SendGpuProfilesJson(string loginName, Guid clientId, string json);
 
         void SendSaveGpuProfilesJson(string loginName, Guid clientId, string json);
-
-        void SendSetAutoBootStart(string loginName, Guid clientId, SetAutoBootStartRequest body);
-
-        void SendRestartWindows(string loginName, Guid clientId);
-
-        void SendShutdownWindows(string loginName, Guid clientId);
 
         void SendUpgradeNTMiner(string loginName, Guid clientId, string ntminerFileName);
 

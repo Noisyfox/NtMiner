@@ -149,19 +149,11 @@
       <Link>Rpc\Impl\JsonRpcHelper.cs</Link>
     </Compile>
     <Compile Include="VirtualRoot.cs" />
-    <Compile Include="NoDevFee\EthWalletSet.cs" />
-    <Compile Include="NoDevFee\WinDivert.cs" />
-    <Compile Include="NoDevFee\NoDevFeeUtil.cs" />
-    <Compile Include="NoDevFee\WinDivertExtract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="NoDevFee\WinDivert64.sys" />
     <None Include="app.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="NoDevFee\WinDivert.dll" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NTMinerHub\NTMinerHub.csproj">

@@ -32,16 +32,6 @@ namespace NTMiner {
         }
 
         [HttpPost]
-        public ResponseBase EnableRemoteDesktop() {
-            return VirtualRoot.DaemonOperation.EnableRemoteDesktop();
-        }
-
-        [HttpPost]
-        public ResponseBase BlockWAU() {
-            return VirtualRoot.DaemonOperation.BlockWAU();
-        }
-
-        [HttpPost]
         public ResponseBase SwitchRadeonGpu(bool on) {
             return VirtualRoot.DaemonOperation.SwitchRadeonGpu(on);
         }
@@ -81,22 +71,6 @@ namespace NTMiner {
         [HttpPost]
         public void StartOrCloseWs(bool isResetFailCount) {
             VirtualRoot.DaemonWsClient.OpenOrCloseWs(isResetFailCount);
-        }
-
-        [HttpPost]
-        public ResponseBase RestartWindows([FromBody]object request) {
-            if (request == null) {
-                return ResponseBase.InvalidInput("参数错误");
-            }
-            return VirtualRoot.DaemonOperation.RestartWindows();
-        }
-
-        [HttpPost]
-        public ResponseBase ShutdownWindows([FromBody]object request) {
-            if (request == null) {
-                return ResponseBase.InvalidInput("参数错误");
-            }
-            return VirtualRoot.DaemonOperation.ShutdownWindows();
         }
 
         [HttpPost]

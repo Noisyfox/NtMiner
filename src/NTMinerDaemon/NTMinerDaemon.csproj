@@ -82,14 +82,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\AppModels\RemoteDesktop\Firewall.cs">
-      <Link>RemoteDesktop\Firewall.cs</Link>
-    </Compile>
     <Compile Include="..\MinerClientSelfHost\HttpServer.cs">
       <Link>HttpServer.cs</Link>
-    </Compile>
-    <Compile Include="..\NTMinerClient\Windows\Power.cs">
-      <Link>Windows\Power.cs</Link>
     </Compile>
     <Compile Include="..\NTMinerClient\Windows\WMI.cs">
       <Link>Windows\WMI.cs</Link>

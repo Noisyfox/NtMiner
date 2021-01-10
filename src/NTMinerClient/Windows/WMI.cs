@@ -4,34 +4,9 @@ using System.Management;
 
 namespace NTMiner.Windows {
     public class WMI {
-        private static bool _isFirstCall = true;
-        private static bool _isWmiEnabled;
         public static bool IsWmiEnabled {
             get {
-                if (!_isFirstCall) {
-                    return _isWmiEnabled;
-                }
-                _isFirstCall = false;
-#if DEBUG
-                NTStopwatch.Start();
-#endif
-                try {
-                    using (new ManagementObjectSearcher("root\\CIMV2", "SELECT FreePhysicalMemory FROM Win32_OperatingSystem").Get()) {
-                        NTMinerConsole.DevOk("WMI service seems to be running, ManagementObjectSearcher returned success.");
-                        _isWmiEnabled = true;
-                    }
-                }
-                catch {
-                    NTMinerConsole.DevError("ManagementObjectSearcher not working need WMI service to be running");
-                    _isWmiEnabled = false;
-                }
-#if DEBUG
-                var elapsedMilliseconds = NTStopwatch.Stop();
-                if (elapsedMilliseconds.ElapsedMilliseconds > NTStopwatch.ElapsedMilliseconds) {
-                    NTMinerConsole.DevTimeSpan($"耗时{elapsedMilliseconds} {nameof(WMI)}.IsWmiEnabled");
-                }
-#endif
-                return _isWmiEnabled;
+                return true;
             }
         }
 

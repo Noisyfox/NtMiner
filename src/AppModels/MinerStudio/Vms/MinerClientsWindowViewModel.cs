@@ -457,34 +457,6 @@ namespace NTMiner.MinerStudio.Vms {
                 }
                 #endregion
             }, IsSelectedAny);
-            this.RestartWindows = new DelegateCommand(() => {
-                #region
-                if (SelectedMinerClients.Length == 0) {
-                    ShowNoRecordSelected();
-                }
-                else {
-                    this.ShowSoftDialog(new DialogWindowViewModel(message: $"确定重启选中的电脑吗？", title: "确认", onYes: () => {
-                        foreach (var item in SelectedMinerClients) {
-                            MinerStudioService.Instance.RestartWindowsAsync(item);
-                        }
-                    }));
-                }
-                #endregion
-            }, IsSelectedAny);
-            this.ShutdownWindows = new DelegateCommand(() => {
-                #region
-                if (SelectedMinerClients.Length == 0) {
-                    ShowNoRecordSelected();
-                }
-                else {
-                    this.ShowSoftDialog(new DialogWindowViewModel(message: $"确定关闭选中的电脑吗？", title: "确认", onYes: () => {
-                        foreach (var item in SelectedMinerClients) {
-                            MinerStudioService.Instance.ShutdownWindowsAsync(item);
-                        }
-                    }));
-                }
-                #endregion
-            }, IsSelectedAny);
             this.StartMine = new DelegateCommand(() => {
                 #region
                 if (SelectedMinerClients.Length == 0) {
@@ -518,59 +490,6 @@ namespace NTMiner.MinerStudio.Vms {
             this.SelfMineWork = new DelegateCommand(() => {
                 MineWorkViewModel.SelfMineWork.Edit.Execute(FormType.Edit);
             }, IsSelectedOne);
-            this.EnableRemoteDesktop = new DelegateCommand(() => {
-                #region
-                if (SelectedMinerClients.Length == 0) {
-                    ShowNoRecordSelected();
-                }
-                else {
-                    this.ShowSoftDialog(new DialogWindowViewModel(message: $"确定启用选中的矿机的Windows远程桌面功能吗？", title: "确认", onYes: () => {
-                        foreach (var item in SelectedMinerClients) {
-                            MinerStudioService.Instance.EnableRemoteDesktopAsync(item);
-                        }
-                    }));
-                }
-                #endregion
-            }, IsSelectedAny);
-            this.RemoteDesktop = new DelegateCommand(() => {
-                #region
-                string windowsLoginName = string.Empty;
-                string windowsPassword = string.Empty;
-                if (SelectedMinerClients.Length == 0) {
-                    ShowNoRecordSelected();
-                }
-                else if (SelectedMinerClients.Length == 1) {
-                    var selectedVm = SelectedMinerClients[0];
-                    windowsLoginName = selectedVm.WindowsLoginName;
-                    windowsPassword = selectedVm.WindowsPassword;
-                }
-                VirtualRoot.Execute(new ShowRemoteDesktopLoginDialogCommand(new RemoteDesktopLoginViewModel(windowsLoginName) {
-                    Title = "设置远程桌面",
-                    Password = windowsPassword,
-                    OnOk = vm => {
-                        foreach (var item in SelectedMinerClients) {
-                            item.WindowsLoginName = vm.LoginName;
-                            item.WindowsPassword = vm.Password;
-                        }
-                        VirtualRoot.Out.ShowSuccess("设置成功，双击矿机可直接远程桌面。", toConsole: true);
-                    }
-                }));
-                #endregion
-            }, IsSelectedAny);
-            this.BlockWAU = new DelegateCommand(() => {
-                #region
-                if (SelectedMinerClients.Length == 0) {
-                    ShowNoRecordSelected();
-                }
-                else {
-                    this.ShowSoftDialog(new DialogWindowViewModel(message: $"确定禁用选中的矿机的Windows自动更新功能吗？", title: "确认", onYes: () => {
-                        foreach (var item in SelectedMinerClients) {
-                            MinerStudioService.Instance.BlockWAUAsync(item);
-                        }
-                    }));
-                }
-                #endregion
-            }, IsSelectedAny);
             this.PowerCfgOff = new DelegateCommand(() => {
                 VirtualRoot.Out.ShowSuccess("挖矿端启动时已自动关闭系统休眠", header: "提示", autoHideSeconds: 0);
             }, IsSelectedAny);

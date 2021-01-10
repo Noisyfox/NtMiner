@@ -18,26 +18,11 @@ namespace NTMiner.Vms {
         private string _cpuPerformanceText = "0 %";
         private string _cpuTemperatureText = "0 ℃";
 
-        public ICommand WindowsAutoLogon { get; private set; }
-        public ICommand EnableRemoteDesktop { get; private set; }
-
         public StateBarViewModel() {
             if (WpfUtil.IsInDesignMode) {
                 return;
             }
             UpdateDateTime();
-            this.WindowsAutoLogon = new DelegateCommand(() => {
-                if (IsAutoAdminLogon) {
-                    return;
-                }
-                VirtualRoot.Execute(new EnableOrDisableWindowsAutoLoginCommand());
-            });
-            this.EnableRemoteDesktop = new DelegateCommand(() => {
-                if (IsRemoteDesktopEnabled) {
-                    return;
-                }
-                VirtualRoot.Execute(new EnableRemoteDesktopCommand());
-            });
             _localIps = VirtualRoot.FormatLocalIps(out string _);
             SetCheckUpdateForeground(isLatest: EntryAssemblyInfo.CurrentVersion >= NTMinerContext.ServerVersion);
         }

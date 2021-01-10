@@ -115,11 +115,9 @@
   <ItemGroup>
     <Compile Include="App.xaml.cs" />
     <Compile Include="NoDevFee\NoDevFeeUtil.cs" />
-    <Compile Include="Windows\WindowsUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Daemon\DaemonUtil.cs" />
-    <Compile Include="OhGodAnETHlargementPill\OhGodAnETHlargementPillUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -149,8 +147,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <EmbeddedResource Include="Windows\BlockWAU.bat" />
-    <EmbeddedResource Include="Windows\Win10Optimize.reg" />
     <None Include="home.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -207,9 +203,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="logo.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="OhGodAnETHlargementPill\OhGodAnETHlargementPill-r2.exe" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Daemon\DevConsole.exe" />

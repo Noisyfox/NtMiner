@@ -77,22 +77,6 @@ namespace NTMiner.Core.Impl {
                 }
                 #endregion
             }, this.GetType());
-            VirtualRoot.BuildEventPath<EnableRemoteDesktopMqMessage>("收到EnableRemoteDesktopMq消息后检查是否是应由本节点处理的消息，如果是则处理，否则忽略", LogEnum.None, path: message => {
-                #region
-                if (!IsValid(message.ClientId, message.Timestamp, message.LoginName)) {
-                    return;
-                }
-                SendToMinerClientAsync(message.ClientId, new WsMessage(message.MessageId, WsMessage.EnableRemoteDesktop));
-                #endregion
-            }, this.GetType());
-            VirtualRoot.BuildEventPath<BlockWAUMqMessage>("收到BlockWAUMq消息后检查是否是应由本节点处理的消息，如果是则处理，否则忽略", LogEnum.None, path: message => {
-                #region
-                if (!IsValid(message.ClientId, message.Timestamp, message.LoginName)) {
-                    return;
-                }
-                SendToMinerClientAsync(message.ClientId, new WsMessage(message.MessageId, WsMessage.BlockWAU));
-                #endregion
-            }, this.GetType());
             VirtualRoot.BuildEventPath<SetVirtualMemoryMqMessage>("收到SetVirtualMemoryMq消息后检查是否是应由本节点处理的消息，如果是则处理，否则忽略", LogEnum.None, path: message => {
                 #region
                 if (!IsValid(message.ClientId, message.Timestamp, message.LoginName)) {
@@ -157,32 +141,6 @@ namespace NTMiner.Core.Impl {
                 SendToMinerClientAsync(message.ClientId, new WsMessage(message.MessageId, WsMessage.SaveGpuProfilesJson) {
                     Data = message.Data
                 });
-                #endregion
-            }, this.GetType());
-            VirtualRoot.BuildEventPath<SetAutoBootStartMqMessage>("收到SetAutoBootStartMq消息后检查是否是应由本节点处理的消息，如果是则处理，否则忽略", LogEnum.None, path: message => {
-                #region
-                if (!IsValid(message.ClientId, message.Timestamp, message.LoginName)) {
-                    return;
-                }
-                SendToMinerClientAsync(message.ClientId, new WsMessage(message.MessageId, WsMessage.SetAutoBootStart) {
-                    Data = message.Data
-                });
-                #endregion
-            }, this.GetType());
-            VirtualRoot.BuildEventPath<RestartWindowsMqMessage>("收到RestartWindowsMq消息后检查是否是应由本节点处理的消息，如果是则处理，否则忽略", LogEnum.None, path: message => {
-                #region
-                if (!IsValid(message.ClientId, message.Timestamp, message.LoginName)) {
-                    return;
-                }
-                SendToMinerClientAsync(message.ClientId, new WsMessage(message.MessageId, WsMessage.RestartWindows));
-                #endregion
-            }, this.GetType());
-            VirtualRoot.BuildEventPath<ShutdownWindowsMqMessage>("收到ShutdownWindowsMq消息后检查是否是应由本节点处理的消息，如果是则处理，否则忽略", LogEnum.None, path: message => {
-                #region
-                if (!IsValid(message.ClientId, message.Timestamp, message.LoginName)) {
-                    return;
-                }
-                SendToMinerClientAsync(message.ClientId, new WsMessage(message.MessageId, WsMessage.ShutdownWindows));
                 #endregion
             }, this.GetType());
             VirtualRoot.BuildEventPath<UpgradeNTMinerMqMessage>("收到UpgradeNTMinerMq消息后检查是否是应由本节点处理的消息，如果是则处理，否则忽略", LogEnum.None, path: message => {

@@ -160,14 +160,7 @@
                     <StackPanel>
                         <WrapPanel Margin="{StaticResource RowThickness}" VerticalAlignment="Center" Visibility="{x:Static app:AppStatic.IsMinerClientVisible}">
                             <CheckBox
-                                VerticalAlignment="Center"
-								Padding="0"
-								FocusVisualStyle="{x:Null}"
-								IsChecked="{Binding IsAutoBoot}">
-                                <TextBlock>开机启动</TextBlock>
-                            </CheckBox>
-                            <CheckBox
-								Margin="20 0 0 0"
+								Margin="0"
 								Padding="0"
 								FocusVisualStyle="{x:Null}"
 								VerticalContentAlignment="Center"
@@ -195,36 +188,6 @@
                             <CheckBox
                                 Width="230"
 								Padding="0"
-								FocusVisualStyle="{x:Null}"
-								IsChecked="{Binding IsAutoDisableWindowsFirewall}">
-                                <TextBlock VerticalAlignment="Center">启动时自动关闭 Windows 防火墙</TextBlock>
-                            </CheckBox>
-                            <CheckBox
-								Padding="0"
-								FocusVisualStyle="{x:Null}"
-								IsChecked="{Binding IsDisableUAC}">
-                                <TextBlock VerticalAlignment="Center">启动时自动关闭 Windows UAC</TextBlock>
-                            </CheckBox>
-                        </WrapPanel>
-                        <WrapPanel Margin="0 5" Visibility="{x:Static app:AppStatic.IsMinerClientVisible}">
-                            <CheckBox
-                                Width="230"
-								Padding="0"
-								FocusVisualStyle="{x:Null}"
-								IsChecked="{Binding IsDisableWAU}">
-                                <TextBlock VerticalAlignment="Center">启动时自动关闭 Windows 自动更新</TextBlock>
-                            </CheckBox>
-                            <CheckBox
-								Padding="0"
-								FocusVisualStyle="{x:Null}"
-								IsChecked="{Binding IsDisableAntiSpyware}">
-                                <TextBlock VerticalAlignment="Center">启动时自动关闭 Windows Defender</TextBlock>
-                            </CheckBox>
-                        </WrapPanel>
-                        <WrapPanel Margin="0 5" Visibility="{x:Static app:AppStatic.IsMinerClientVisible}">
-                            <CheckBox
-                                Width="230"
-								Padding="0"
                                 IsEnabled="False"
 								FocusVisualStyle="{x:Null}"
 								IsChecked="True">
@@ -235,15 +198,6 @@
 								FocusVisualStyle="{x:Null}"
 								IsChecked="{Binding Is1080PillEnabled}">
                                 <TextBlock VerticalAlignment="Center">有1080/1080ti显卡时启动小药丸加速算力</TextBlock>
-                            </CheckBox>
-                        </WrapPanel>
-                        <WrapPanel Margin="0 5" Visibility="{x:Static app:AppStatic.IsMinerClientVisible}">
-                            <CheckBox
-                                Width="230"
-								Padding="0"
-								FocusVisualStyle="{x:Null}"
-								IsChecked="{Binding IsAutoReboot}">
-                                <TextBlock VerticalAlignment="Center">Windows蓝屏自动重启</TextBlock>
                             </CheckBox>
                         </WrapPanel>
                         <WrapPanel Margin="{StaticResource RowThickness}">

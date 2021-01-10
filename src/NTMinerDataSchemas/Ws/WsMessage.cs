@@ -28,16 +28,11 @@ namespace NTMiner.Ws {
         public const string GetSelfWorkLocalJson = "GetSelfWorkLocalJson";// MinerStudio->WsServer->Mq->WsServer->MinerClient
         public const string GetGpuProfilesJson = "GetGpuProfilesJson";// MinerStudio->WsServer->Mq->WsServer->MinerClient
 
-        public const string EnableRemoteDesktop = "EnableRemoteDesktop";// MinerStudio->WsServer->Mq->WsServer->MinerClient
-        public const string BlockWAU = "BlockWAU";// MinerStudio->WsServer->Mq->WsServer->MinerClient
         public const string SwitchRadeonGpu = "SwitchRadeonGpu";// MinerStudio->WsServer->Mq->WsServer->MinerClient
         public const string SetVirtualMemory = "SetVirtualMemory";// MinerStudio->WsServer->Mq->WsServer->MinerClient
         public const string SetLocalIps = "SetLocalIps";// MinerStudio->WsServer->Mq->WsServer->MinerClient
         public const string SaveSelfWorkLocalJson = "SaveSelfWorkLocalJson";// MinerStudio->WsServer->Mq->WsServer->MinerClient
         public const string SaveGpuProfilesJson = "SaveGpuProfilesJson";// MinerStudio->WsServer->Mq->WsServer->MinerClient
-        public const string SetAutoBootStart = "SetAutoBootStart";// MinerStudio->WsServer->Mq->WsServer->MinerClient
-        public const string RestartWindows = "RestartWindows";// MinerStudio->WsServer->Mq->WsServer->MinerClient
-        public const string ShutdownWindows = "ShutdownWindows";// MinerStudio->WsServer->Mq->WsServer->MinerClient
         public const string UpgradeNTMiner = "UpgradeNTMiner";// MinerStudio->WsServer->Mq->WsServer->MinerClient
         public const string StartMine = "StartMine";// MinerStudio->WsServer->Mq->WsServer->MinerClient
         public const string StopMine = "StopMine";// MinerStudio->WsServer->Mq->WsServer->MinerClient

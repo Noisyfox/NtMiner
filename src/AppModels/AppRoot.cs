@@ -1,6 +1,5 @@
 ﻿using NTMiner.Core;
 using NTMiner.Hub;
-using NTMiner.RemoteDesktop;
 using NTMiner.Vms;
 using System;
 using System.Collections.Generic;
@@ -12,7 +11,6 @@ namespace NTMiner {
     /// 该类型不是用于绑定到视图的，AppStatic才是
     /// </summary>
     public static partial class AppRoot {
-        public static Action<RdpInput> RemoteDesktop;
         public static ExtendedNotifyIcon NotifyIcon;
         public const string LowWinMessage = "Windows版本较低，建议使用Win10系统";
 

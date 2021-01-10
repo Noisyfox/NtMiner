@@ -26,29 +26,10 @@ namespace NTMiner.MinerStudio.Vms {
             this.Save = new DelegateCommand(() => {
                 if (minerClients != null && minerClients.Length != 0) {
                     foreach (var item in minerClients) {
-                        MinerStudioService.Instance.SetAutoBootStartAsync(item, new SetAutoBootStartRequest {
-                            AutoStart = this.IsAutoStart,
-                            AutoBoot = this.IsAutoBoot
-                        });
                     }
                 }
                 VirtualRoot.Execute(new CloseWindowCommand(this.Id));
             });
-        }
-
-        public bool IsAutoBoot {
-            get => _isAutoBoot;
-            set {
-                _isAutoBoot = value;
-                OnPropertyChanged(nameof(IsAutoBoot));
-            }
-        }
-        public bool IsAutoStart {
-            get => _isAutoStart;
-            set {
-                _isAutoStart = value;
-                OnPropertyChanged(nameof(IsAutoStart));
-            }
         }
     }
 }

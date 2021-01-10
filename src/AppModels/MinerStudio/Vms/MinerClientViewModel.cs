@@ -1,7 +1,6 @@
 ﻿using NTMiner.Core;
 using NTMiner.Core.MinerServer;
 using NTMiner.Gpus;
-using NTMiner.RemoteDesktop;
 using NTMiner.Vms;
 using System;
 using System.Collections.Generic;
@@ -65,46 +64,6 @@ namespace NTMiner.MinerStudio.Vms {
                     });
                 }));
                 #endregion
-            });
-            this.RemoteDesktop = new DelegateCommand(() => {
-                #region
-                if (!MinerIpExtensions.TryGetFirstIp(this.LocalIp, out string ip)) {
-                    if (MinerIpExtensions.TryGetFirstIp(this.MinerIp, out string minerIp) && Net.IpUtil.IsInnerIp(minerIp)) {
-                        ip = minerIp;
-                    }
-                    else {
-                        VirtualRoot.Out.ShowWarn("Ip地址不能为空", autoHideSeconds: 4);
-                        return;
-                    }
-                }
-                if (string.IsNullOrEmpty(this.WindowsLoginName)) {
-                    VirtualRoot.Execute(new ShowRemoteDesktopLoginDialogCommand(new RemoteDesktopLoginViewModel {
-                        Title = "连接远程桌面 - " + ip,
-                        OnOk = vm => {
-                            this.WindowsLoginName = vm.LoginName;
-                            this.WindowsPassword = vm.Password;
-                            AppRoot.RemoteDesktop?.Invoke(new RdpInput(ip, this.WindowsLoginName, this.WindowsPassword, this.MinerName, onDisconnected: message => {
-                                VirtualRoot.Out.ShowError(message, autoHideSeconds: 4, toConsole: true);
-                            }));
-                        }
-                    }));
-                }
-                else {
-                    AppRoot.RemoteDesktop?.Invoke(new RdpInput(ip, this.WindowsLoginName, this.WindowsPassword, this.MinerName, onDisconnected: message => {
-                        VirtualRoot.Out.ShowError(message, autoHideSeconds: 4, toConsole: true);
-                    }));
-                }
-                #endregion
-            });
-            this.RestartWindows = new DelegateCommand(() => {
-                this.ShowSoftDialog(new DialogWindowViewModel(message: $"您确定重启{this.GetMinerText()}电脑吗？", title: "确认", onYes: () => {
-                    MinerStudioService.Instance.RestartWindowsAsync(this);
-                }));
-            });
-            this.ShutdownWindows = new DelegateCommand(() => {
-                this.ShowSoftDialog(new DialogWindowViewModel(message: $"确定关闭{this.GetMinerText()}电脑吗？", title: "确认", onYes: () => {
-                    MinerStudioService.Instance.ShutdownWindowsAsync(this);
-                }));
             });
             this.StartMine = new DelegateCommand(() => {
                 this.ShowSoftDialog(new DialogWindowViewModel(message: $"{this.GetMinerText()}：确定开始挖矿吗？", title: "确认", onYes: () => {

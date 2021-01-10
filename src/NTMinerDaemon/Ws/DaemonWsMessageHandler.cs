@@ -93,18 +93,6 @@ namespace NTMiner.Ws {
                     });
                 }
             },
-            [WsMessage.SetAutoBootStart] = (sendAsync, message) => {
-                if (message.TryGetData(out SetAutoBootStartRequest data)) {
-                    Task.Factory.StartNew(() => {
-                        VirtualRoot.DaemonOperation.SetAutoBootStart(data.AutoBoot, data.AutoStart);
-                    });
-                }
-            },
-            [WsMessage.EnableRemoteDesktop] = (sendAsync, message) => {
-                Task.Factory.StartNew(() => {
-                    VirtualRoot.DaemonOperation.EnableRemoteDesktop();
-                });
-            },
             [WsMessage.SetVirtualMemory] = (sendAsync, message) => {
                 if (message.TryGetData(out Dictionary<string, int> data)) {
                     Task.Factory.StartNew(() => {
@@ -125,21 +113,6 @@ namespace NTMiner.Ws {
                         VirtualRoot.DaemonOperation.SwitchRadeonGpu(on);
                     });
                 }
-            },
-            [WsMessage.BlockWAU] = (sendAsync, message) => {
-                Task.Factory.StartNew(() => {
-                    VirtualRoot.DaemonOperation.BlockWAU();
-                });
-            },
-            [WsMessage.RestartWindows] = (sendAsync, message) => {
-                Task.Factory.StartNew(() => {
-                    VirtualRoot.DaemonOperation.RestartWindows();
-                });
-            },
-            [WsMessage.ShutdownWindows] = (sendAsync, message) => {
-                Task.Factory.StartNew(() => {
-                    VirtualRoot.DaemonOperation.ShutdownWindows();
-                });
             },
             [WsMessage.UpgradeNTMiner] = (sendAsync, message) => {
                 if (message.TryGetData(out string ntminerFileName)) {

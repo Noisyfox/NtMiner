@@ -148,9 +148,6 @@
     <Compile Include="MinerStudio\Views\Ucs\WsServerNodePage.xaml.cs">
       <DependentUpon>WsServerNodePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Ucs\WindowsAutoLogon.xaml.cs">
-      <DependentUpon>WindowsAutoLogon.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Ucs\SignUpPage.xaml.cs">
       <DependentUpon>SignUpPage.xaml</DependentUpon>
     </Compile>
@@ -743,10 +740,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MinerStudio\Views\Ucs\WsServerNodePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Ucs\WindowsAutoLogon.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

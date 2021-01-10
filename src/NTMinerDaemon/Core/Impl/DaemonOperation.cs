@@ -1,7 +1,6 @@
 ﻿using NTMiner.Controllers;
 using NTMiner.Core.Daemon;
 using NTMiner.Core.MinerClient;
-using NTMiner.RemoteDesktop;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,7 +18,6 @@ namespace NTMiner.Core.Impl {
             ResponseBase response;
             try {
                 NTMinerRegistry.SetIsRdpEnabled(true);
-                Firewall.AddRdpRule();
                 if (IsNTMinerOpened()) {
                     RpcRoot.JsonRpc.FirePostAsync(NTKeyword.Localhost, NTKeyword.MinerClientPort, _minerClientControllerName, nameof(IMinerClientController.RefreshIsRemoteDesktopEnabled), null, data: null, timeountMilliseconds: 3000);
                 }
@@ -52,12 +50,6 @@ namespace NTMiner.Core.Impl {
         #region SwitchRadeonGpu
         public ResponseBase SwitchRadeonGpu(bool on) {
             return RunAction(on ? MinerClientActionType.SwitchRadeonGpuOn : MinerClientActionType.SwitchRadeonGpuOff);
-        }
-        #endregion
-
-        #region BlockWAU
-        public ResponseBase BlockWAU() {
-            return RunAction(MinerClientActionType.BlockWAU);
         }
         #endregion
 
@@ -176,7 +168,6 @@ namespace NTMiner.Core.Impl {
         public ResponseBase RestartWindows() {
             ResponseBase response;
             try {
-                Windows.Power.Restart(10);
                 CloseNTMiner();
                 response = ResponseBase.Ok("重启矿机");
             }
@@ -193,7 +184,6 @@ namespace NTMiner.Core.Impl {
         public ResponseBase ShutdownWindows() {
             ResponseBase response;
             try {
-                Windows.Power.Shutdown(10);
                 CloseNTMiner();
                 response = ResponseBase.Ok("关闭矿机");
             }

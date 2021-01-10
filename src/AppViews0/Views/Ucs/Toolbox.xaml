@@ -190,84 +190,19 @@
 					Command="{x:Static app:AppStatic.ShowVirtualMemory}"
 					Cursor="Hand"
 					Background="Transparent">
-					<WrapPanel VerticalAlignment="Center">
-						<Path 
+                    <WrapPanel VerticalAlignment="Center">
+                        <Path 
 							Width="30"
 							Height="30"
 							Data="{StaticResource Icon_VirtualMemory}"
 							Fill="{StaticResource BtnBackground}"
 							Stretch="Fill" />
-						<StackPanel Margin="8 0 0 0" Width="152">
-							<TextBlock FontWeight="Bold" FontSize="14">管理虚拟内存</TextBlock>
-							<TextBlock Foreground="{StaticResource LableColor}">打开虚拟内存管理页面</TextBlock>
-						</StackPanel>
-					</WrapPanel>
-				</controls:KbButton>
-                <controls:KbButton 
-					Height="{StaticResource ItemHeight}" 
-					Width="{StaticResource ItemWidth}"
-					Margin="4"
-                    KbButtonHoverBackground="{StaticResource KbButtonHoverBackground}"
-					IsEnabled="{Binding IsRemoteDesktopEnabled,Converter={StaticResource BoolInvertConverter}}"
-					Command="{Binding EnableRemoteDesktop}"
-					Cursor="Hand"
-					Background="Transparent">
-					<WrapPanel VerticalAlignment="Center">
-						<Path 
-							Width="30"
-							Height="30"
-							Data="{StaticResource Icon_RemoteDesktop}"
-							Fill="{StaticResource BtnBackground}"
-							Stretch="Fill" />
-						<StackPanel Margin="8 0 0 0" Width="152">
-							<TextBlock FontWeight="Bold" FontSize="14">Windows远程桌面</TextBlock>
-							<TextBlock Foreground="{Binding IsRemoteDesktopEnabled,Converter={StaticResource BoolToBrushConverter}}" Text="{Binding RemoteDesktopMessage}"></TextBlock>
-						</StackPanel>
-					</WrapPanel>
-				</controls:KbButton>
-                <controls:KbButton 
-					Height="{StaticResource ItemHeight}" 
-					Width="{StaticResource ItemWidth}"
-					Margin="4"
-                    KbButtonHoverBackground="{StaticResource KbButtonHoverBackground}"
-					IsEnabled="{Binding IsAutoAdminLogon,Converter={StaticResource BoolInvertConverter}}"
-					Command="{Binding WindowsAutoLogon}"
-					Cursor="Hand"
-					Background="Transparent">
-					<WrapPanel VerticalAlignment="Center">
-						<Path 
-							Width="30"
-							Height="30"
-							Data="{StaticResource Icon_Login}"
-							Fill="{StaticResource BtnBackground}"
-							Stretch="Fill" />
-						<StackPanel Margin="8 0 0 0" Width="152">
-							<TextBlock FontWeight="Bold" FontSize="14">Windows开机自动登录</TextBlock>
-							<TextBlock Foreground="{Binding IsAutoAdminLogon,Converter={StaticResource BoolToBrushConverter}}" Text="{Binding AutoAdminLogonMessage}"></TextBlock>
-						</StackPanel>
-					</WrapPanel>
-				</controls:KbButton>
-                <controls:KbButton 
-					Height="{StaticResource ItemHeight}" 
-					Width="{StaticResource ItemWidth}"
-					Margin="4"
-                    KbButtonHoverBackground="{StaticResource KbButtonHoverBackground}"
-					Command="{Binding Win10Optimize}"
-					Cursor="Hand"
-					Background="Transparent">
-					<WrapPanel VerticalAlignment="Center">
-						<Path 
-							Width="30"
-							Height="30"
-							Data="{StaticResource Icon_Windows}"
-							Fill="{StaticResource BtnBackground}"
-							Stretch="Fill" />
-						<StackPanel Margin="8 0 0 0" Width="152">
-							<TextBlock FontWeight="Bold" FontSize="14">一键优化Windows</TextBlock>
-							<TextBlock Foreground="{StaticResource LableColor}">面向挖矿优化Windows</TextBlock>
-						</StackPanel>
-					</WrapPanel>
-				</controls:KbButton>
+                        <StackPanel Margin="8 0 0 0" Width="152">
+                            <TextBlock FontWeight="Bold" FontSize="14">管理虚拟内存</TextBlock>
+                            <TextBlock Foreground="{StaticResource LableColor}">打开虚拟内存管理页面</TextBlock>
+                        </StackPanel>
+                    </WrapPanel>
+                </controls:KbButton>
                 <controls:KbButton 
 					Height="{StaticResource ItemHeight}" 
 					Width="{StaticResource ItemWidth}"
@@ -276,8 +211,8 @@
 					Command="{Binding RegCmdHere}"
 					Cursor="Hand"
 					Background="Transparent">
-					<WrapPanel VerticalAlignment="Center">
-						<Path 
+                    <WrapPanel VerticalAlignment="Center">
+                        <Path 
 							Width="34"
 							Height="30"
                             Visibility="{Binding IsWinCmdLoading,Converter={StaticResource BoolToVisibilityInvertConverter}}"
@@ -296,35 +231,14 @@
                             </Path.RenderTransform>
                         </Path>
                         <StackPanel Margin="8 0 0 0" Width="152" ToolTip="方便在当前目录打开命令行">
-							<TextBlock FontWeight="Bold" FontSize="14">Windows右键命令行</TextBlock>
+                            <TextBlock FontWeight="Bold" FontSize="14">Windows右键命令行</TextBlock>
                             <WrapPanel>
                                 <TextBlock Foreground="Green" Visibility="{Binding IsRegedCmdHere,Converter={StaticResource BoolToVisibilityConverter}}">已添加</TextBlock>
                                 <TextBlock Foreground="Red" Visibility="{Binding IsRegedCmdHere,Converter={StaticResource BoolToVisibilityInvertConverter}}">未添加</TextBlock>
                             </WrapPanel>
-						</StackPanel>
-					</WrapPanel>
-				</controls:KbButton>
-                <controls:KbButton 
-					Height="{StaticResource ItemHeight}" 
-					Width="{StaticResource ItemWidth}"
-					Margin="4"
-                    KbButtonHoverBackground="{StaticResource KbButtonHoverBackground}"
-					Command="{Binding BlockWAU}"
-					Cursor="Hand"
-					Background="Transparent">
-					<WrapPanel VerticalAlignment="Center">
-						<Path 
-							Width="30"
-							Height="30"
-							Data="{StaticResource Icon_DisableWindowsUpdate}"
-							Fill="Black"
-							Stretch="Fill" />
-						<StackPanel Margin="8 0 0 0" Width="152">
-							<TextBlock FontWeight="Bold" FontSize="14">禁用Windows系统更新</TextBlock>
-							<TextBlock Foreground="{StaticResource LableColor}">一键禁用Windows系统更新</TextBlock>
-						</StackPanel>
-					</WrapPanel>
-				</controls:KbButton>
+                        </StackPanel>
+                    </WrapPanel>
+                </controls:KbButton>
                 <controls:KbButton 
 					Height="{StaticResource ItemHeight}" 
 					Width="{StaticResource ItemWidth}"

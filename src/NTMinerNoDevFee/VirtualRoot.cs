@@ -64,7 +64,6 @@ namespace NTMiner {
                 BuildEventPath<Per10SecondEvent>("呼吸表示活着", LogEnum.None,
                     path: message => {
                         NTMinerRegistry.SetNoDevFeeActiveOn(DateTime.Now);
-                        NoDevFee.NoDevFeeUtil.StartAsync();
                     }, typeof(VirtualRoot));
                 _waitHandle.WaitOne();
                 Exit();

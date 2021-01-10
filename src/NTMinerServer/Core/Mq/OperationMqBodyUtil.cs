@@ -222,19 +222,6 @@ namespace NTMiner.Core.Mq {
         }
         #endregion
 
-        #region SetAutoBootStart
-        public static byte[] GetSetAutoBootStartMqSendBody(SetAutoBootStartRequest body) {
-            return Encoding.UTF8.GetBytes(VirtualRoot.JsonSerializer.Serialize(body));
-        }
-        public static SetAutoBootStartRequest GetSetAutoBootStartMqReceiveBody(byte[] body) {
-            string json = Encoding.UTF8.GetString(body);
-            if (string.IsNullOrEmpty(json)) {
-                return null;
-            }
-            return VirtualRoot.JsonSerializer.Deserialize<SetAutoBootStartRequest>(json);
-        }
-        #endregion
-
         #region StartMine
         public static byte[] GetStartMineMqSendBody(Guid workId) {
             return Encoding.UTF8.GetBytes(workId.ToString());

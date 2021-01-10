@@ -129,12 +129,6 @@ namespace NTMiner {
                 Link();
                 // 当显卡温度变更时守卫温度防线
                 TempGruarder.Instance.Init(this);
-                // 因为这里耗时500毫秒左右
-                Task.Factory.StartNew(() => {
-                    Error.DisableWindowsErrorUI();
-                    Power.PowerCfgOff();
-                    BcdEdit.IgnoreAllFailures();
-                });
             }
 
             callback?.Invoke();
@@ -227,10 +221,6 @@ namespace NTMiner {
                     VirtualRoot.ThisLocalError(nameof(NTMinerContext), "移除windows右键命令行失败", OutEnum.Warn);
                 }
             }, location: this.GetType());
-            VirtualRoot.BuildEventPath<Per1MinuteEvent>("每1分钟阻止系统休眠", LogEnum.None,
-                path: message => {
-                    Power.PreventSleep(MinerProfile.IsPreventDisplaySleep);
-                }, location: this.GetType());
             #region 挖矿开始时将无份额内核重启份额计数置0
             int shareCount = 0;
             DateTime shareOn = DateTime.Now;

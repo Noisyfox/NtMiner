@@ -77,7 +77,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppTypeTests.cs" />
     <Compile Include="Base64StringTests.cs" />
     <Compile Include="BinarySerializerTests.cs" />
     <Compile Include="BoxTests.cs" />
@@ -111,7 +110,6 @@
     <Compile Include="MarshalTests.cs" />
     <Compile Include="RegexTests.cs" />
     <Compile Include="TimingTests.cs" />
-    <Compile Include="RemoteDesktopTests.cs" />
     <Compile Include="LocalMessageTests.cs" />
     <Compile Include="NetTests.cs" />
     <Compile Include="JsonSerializerTests.cs" />

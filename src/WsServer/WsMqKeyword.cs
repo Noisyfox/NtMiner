@@ -16,8 +16,6 @@ namespace NTMiner {
         public const string OperationResultsRoutingKey = WsMessage.OperationResults;
         public const string OperationReceivedRoutingKey = WsMessage.OperationReceived;
         public const string GetSpeedRoutingKey = WsMessage.GetSpeed;
-        public const string EnableRemoteDesktopRoutingKey = WsMessage.EnableRemoteDesktop;
-        public const string BlockWAURoutingKey = WsMessage.BlockWAU;
         public const string SwitchRadeonGpuRoutingKey = WsMessage.SwitchRadeonGpu;
         public const string SetVirtualMemoryRoutingKey = WsMessage.SetVirtualMemory;
         public const string SetLocalIpsRoutingKey = WsMessage.SetLocalIps;
@@ -27,9 +25,6 @@ namespace NTMiner {
         public const string SelfWorkLocalJsonRoutingKey = WsMessage.SelfWorkLocalJson;
         public const string GpuProfilesJsonRoutingKey = WsMessage.GpuProfilesJson;
         public const string SaveGpuProfilesJsonRoutingKey = WsMessage.SaveGpuProfilesJson;
-        public const string SetAutoBootStartRoutingKey = WsMessage.SetAutoBootStart;
-        public const string RestartWindowsRoutingKey = WsMessage.RestartWindows;
-        public const string ShutdownWindowsRoutingKey = WsMessage.ShutdownWindows;
         public const string UpgradeNTMinerRoutingKey = WsMessage.UpgradeNTMiner;
         public const string StartMineRoutingKey = WsMessage.StartMine;
         public const string StopMineRoutingKey = WsMessage.StopMine;

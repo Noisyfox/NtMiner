@@ -293,20 +293,6 @@ namespace NTMiner.Core {
         }
     }
 
-    [MessageType(description: "收到了EnableRemoteDesktop Mq消息后")]
-    public class EnableRemoteDesktopMqMessage : OperationMqMessage {
-        public EnableRemoteDesktopMqMessage(string appId, string loginName, DateTime timestamp, Guid clientId)
-            : base(appId, loginName, timestamp, clientId) {
-        }
-    }
-
-    [MessageType(description: "收到了BlockWAU Mq消息后")]
-    public class BlockWAUMqMessage : OperationMqMessage {
-        public BlockWAUMqMessage(string appId, string loginName, DateTime timestamp, Guid clientId)
-            : base(appId, loginName, timestamp, clientId) {
-        }
-    }
-
     [MessageType(description: "收到了SetVirtualMemory Mq消息后")]
     public class SetVirtualMemoryMqMessage : OperationMqMessage<Dictionary<string, int>> {
         public SetVirtualMemoryMqMessage(string appId, string loginName, DateTime timestamp, Guid clientId, Dictionary<string, int> data)
@@ -370,27 +356,6 @@ namespace NTMiner.Core {
     public class SaveGpuProfilesJsonMqMessage : OperationMqMessage<string> {
         public SaveGpuProfilesJsonMqMessage(string appId, string loginName, DateTime timestamp, Guid clientId, string json)
             : base(appId, loginName, timestamp, clientId, json) {
-        }
-    }
-
-    [MessageType(description: "收到了SetAutoBootStart Mq消息后")]
-    public class SetAutoBootStartMqMessage : OperationMqMessage<SetAutoBootStartRequest> {
-        public SetAutoBootStartMqMessage(string appId, string loginName, DateTime timestamp, Guid clientId, SetAutoBootStartRequest body)
-            : base(appId, loginName, timestamp, clientId, body) {
-        }
-    }
-
-    [MessageType(description: "收到了RestartWindows Mq消息后")]
-    public class RestartWindowsMqMessage : OperationMqMessage {
-        public RestartWindowsMqMessage(string appId, string loginName, DateTime timestamp, Guid clientId)
-            : base(appId, loginName, timestamp, clientId) {
-        }
-    }
-
-    [MessageType(description: "收到了ShutdownWindows Mq消息后")]
-    public class ShutdownWindowsMqMessage : OperationMqMessage {
-        public ShutdownWindowsMqMessage(string appId, string loginName, DateTime timestamp, Guid clientId)
-            : base(appId, loginName, timestamp, clientId) {
         }
     }
 

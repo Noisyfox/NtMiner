@@ -10,8 +10,6 @@ namespace NTMiner.Controllers {
     public interface INTMinerDaemonController {
         DataResponse<IntPtr> ShowConsole();
         WsClientState GetWsDaemonState();
-        ResponseBase EnableRemoteDesktop();
-        ResponseBase BlockWAU();
         ResponseBase SwitchRadeonGpu(bool on);
         void CloseDaemon();
         string GetSelfWorkLocalJson();
@@ -21,8 +19,6 @@ namespace NTMiner.Controllers {
         // TODO:应该新增一个Action用于处理配置合集
         void SetAutoBootStart(bool autoBoot, bool autoStart);
         void StartOrCloseWs(bool isResetFailCount);
-        ResponseBase RestartWindows(object request);
-        ResponseBase ShutdownWindows(object request);
         ResponseBase UpgradeNTMiner(UpgradeNTMinerRequest request);
         ResponseBase StartMine(WorkRequest request);
         ResponseBase StopMine(object request);

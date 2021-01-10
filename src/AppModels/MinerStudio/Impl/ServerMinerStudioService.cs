@@ -47,20 +47,6 @@ namespace NTMiner.MinerStudio.Impl {
         }
         #endregion
 
-        #region EnableRemoteDesktopAsync
-        public void EnableRemoteDesktopAsync(IMinerData client) {
-            if (!MinerStudioRoot.WsClient.IsOpen) {
-                VirtualRoot.Out.ShowWarn("和服务器失去连接", autoHideSeconds: 4);
-                return;
-            }
-            MinerStudioRoot.WsClient.SendAsync(new WsMessage(Guid.NewGuid(), WsMessage.EnableRemoteDesktop) {
-                Data = new WrapperClientId {
-                    ClientId = client.ClientId
-                }
-            });
-        }
-        #endregion
-
         #region GetConsoleOutLinesAsync
         public void GetConsoleOutLinesAsync(IMinerData client, long afterTime) {
             MinerStudioRoot.WsClient.SendAsync(new WsMessage(Guid.NewGuid(), WsMessage.GetConsoleOutLines) {
@@ -81,20 +67,6 @@ namespace NTMiner.MinerStudio.Impl {
             });
         }
 
-        #region BlockWAUAsync
-        public void BlockWAUAsync(IMinerData client) {
-            if (!MinerStudioRoot.WsClient.IsOpen) {
-                VirtualRoot.Out.ShowWarn("和服务器失去连接", autoHideSeconds: 4);
-                return;
-            }
-            MinerStudioRoot.WsClient.SendAsync(new WsMessage(Guid.NewGuid(), WsMessage.BlockWAU) {
-                Data = new WrapperClientId {
-                    ClientId = client.ClientId
-                }
-            });
-        }
-        #endregion
-
         #region SwitchRadeonGpuAsync
         public void SwitchRadeonGpuAsync(IMinerData client, bool on) {
             if (!MinerStudioRoot.WsClient.IsOpen) {
@@ -105,34 +77,6 @@ namespace NTMiner.MinerStudio.Impl {
                 Data = new WrapperClientIdData {
                     ClientId = client.ClientId,
                     Data = on
-                }
-            });
-        }
-        #endregion
-
-        #region RestartWindowsAsync
-        public void RestartWindowsAsync(IMinerData client) {
-            if (!MinerStudioRoot.WsClient.IsOpen) {
-                VirtualRoot.Out.ShowWarn("和服务器失去连接", autoHideSeconds: 4);
-                return;
-            }
-            MinerStudioRoot.WsClient.SendAsync(new WsMessage(Guid.NewGuid(), WsMessage.RestartWindows) {
-                Data = new WrapperClientId {
-                    ClientId = client.ClientId
-                }
-            });
-        }
-        #endregion
-
-        #region ShutdownWindowsAsync
-        public void ShutdownWindowsAsync(IMinerData client) {
-            if (!MinerStudioRoot.WsClient.IsOpen) {
-                VirtualRoot.Out.ShowWarn("和服务器失去连接", autoHideSeconds: 4);
-                return;
-            }
-            MinerStudioRoot.WsClient.SendAsync(new WsMessage(Guid.NewGuid(), WsMessage.ShutdownWindows) {
-                Data = new WrapperClientId {
-                    ClientId = client.ClientId
                 }
             });
         }
@@ -149,21 +93,6 @@ namespace NTMiner.MinerStudio.Impl {
                 Data = new WrapperClientIdData {
                     ClientId = client.ClientId,
                     Data = ntminerFileName
-                }
-            });
-        }
-        #endregion
-
-        #region SetAutoBootStartAsync
-        public void SetAutoBootStartAsync(IMinerData client, SetAutoBootStartRequest request) {
-            if (!MinerStudioRoot.WsClient.IsOpen) {
-                VirtualRoot.Out.ShowWarn("和服务器失去连接", autoHideSeconds: 4);
-                return;
-            }
-            MinerStudioRoot.WsClient.SendAsync(new WsMessage(Guid.NewGuid(), WsMessage.SetAutoBootStart) {
-                Data = new WrapperClientIdData {
-                    ClientId = client.ClientId,
-                    Data = request
                 }
             });
         }

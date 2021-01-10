@@ -6,7 +6,5 @@ namespace NTMiner.Core.MinerClient {
         SwitchRadeonGpuOn,
         [Description("关闭A卡计算模式，如果本机不是A卡将被忽略")]
         SwitchRadeonGpuOff,
-        [Description("禁用Widnows系统更新")]
-        BlockWAU
     }
 }

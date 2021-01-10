@@ -12,10 +12,6 @@ namespace NTMiner.Vms {
         public ICommand SwitchRadeonGpu { get; private set; }
         public ICommand AtikmdagPatcher { get; private set; }
         public ICommand RegCmdHere { get; private set; }
-        public ICommand BlockWAU { get; private set; }
-        public ICommand Win10Optimize { get; private set; }
-        public ICommand EnableRemoteDesktop { get; private set; }
-        public ICommand WindowsAutoLogon { get; private set; }
         public ICommand OpenDevmgmt { get; private set; }
         public ICommand OpenEventvwr { get; private set; }
 
@@ -63,22 +59,6 @@ namespace NTMiner.Vms {
                         });
                     }, btnYesText: "添加"));
                 }
-            });
-            this.BlockWAU = new DelegateCommand(() => {
-                this.ShowSoftDialog(new DialogWindowViewModel(message: $"确定禁用Windows系统更新吗？禁用后可在Windows服务中找到Windows Update手动启用。", title: "确认", onYes: () => {
-                    VirtualRoot.Execute(new BlockWAUCommand());
-                }, helpUrl: BlockWAUHelpUrl));
-            });
-            this.Win10Optimize = new DelegateCommand(() => {
-                this.ShowSoftDialog(new DialogWindowViewModel(message: $"确定面向挖矿优化windows吗？", title: "确认", onYes: () => {
-                    VirtualRoot.Execute(new Win10OptimizeCommand());
-                }, helpUrl: Win10OptimizeHelpUrl));
-            });
-            this.EnableRemoteDesktop = new DelegateCommand(() => {
-                VirtualRoot.Execute(new EnableRemoteDesktopCommand());
-            });
-            this.WindowsAutoLogon = new DelegateCommand(() => {
-                VirtualRoot.Execute(new EnableOrDisableWindowsAutoLoginCommand());
             });
             this.OpenDevmgmt = new DelegateCommand(() => {
                 Process.Start("devmgmt.msc");

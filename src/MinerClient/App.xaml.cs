@@ -3,7 +3,6 @@ using NTMiner.Core.MinerClient;
 using NTMiner.Gpus;
 using NTMiner.Mine;
 using NTMiner.Notifications;
-using NTMiner.RemoteDesktop;
 using NTMiner.View;
 using NTMiner.Views;
 using NTMiner.Views.Ucs;
@@ -123,21 +122,6 @@ namespace NTMiner {
                     });
                     Task.Factory.StartNew(() => {
                         var minerProfile = NTMinerContext.Instance.MinerProfile;
-                        if (minerProfile.IsDisableUAC) {
-                            NTMiner.Windows.UAC.DisableUAC();
-                        }
-                        if (minerProfile.IsAutoDisableWindowsFirewall) {
-                            Firewall.DisableFirewall();
-                        }
-                        if (minerProfile.IsDisableWAU) {
-                            NTMiner.Windows.WAU.DisableWAUAsync();
-                        }
-                        if (minerProfile.IsDisableAntiSpyware) {
-                            NTMiner.Windows.Defender.DisableAntiSpyware();
-                        }
-                        if (!Firewall.IsMinerClientRuleExists()) {
-                            Firewall.AddMinerClientRule();
-                        }
                         try {
                             HttpServer.Start($"http://{NTKeyword.Localhost}:{NTKeyword.MinerClientPort.ToString()}");
                             Daemon.DaemonUtil.RunNTMinerDaemon();
@@ -184,9 +168,6 @@ namespace NTMiner {
                             break;
                         case MinerClientActionType.SwitchRadeonGpuOff:
                             VirtualRoot.Execute(new SwitchRadeonGpuCommand(on: false));
-                            break;
-                        case MinerClientActionType.BlockWAU:
-                            VirtualRoot.Execute(new BlockWAUCommand());
                             break;
                         default:
                             break;
@@ -241,39 +222,13 @@ namespace NTMiner {
                         string consoleTitle = mineContext.MainCoinPool.Server;
                         Daemon.DaemonUtil.RunDevConsoleAsync(poolIp, consoleTitle);
                     }
-                    OhGodAnETHlargementPill.OhGodAnETHlargementPillUtil.Start();
                 }, location: this.GetType());
             VirtualRoot.BuildEventPath<MineStopedEvent>("停止挖矿后停止1080ti小药丸 挖矿停止后更新界面挖矿状态", LogEnum.DevConsole,
                 path: message => {
                     AppRoot.MinerProfileVm.IsMining = false;
                     // 因为无界面模式不一定会构建挖矿状态按钮，所以放在这里而不放在挖矿按钮的VM中
                     StartStopMineButtonViewModel.Instance.MineBtnText = "尚未开始";
-                    OhGodAnETHlargementPill.OhGodAnETHlargementPillUtil.Stop();
                 }, location: this.GetType());
-            #endregion
-            #region 处理禁用win10系统更新
-            VirtualRoot.BuildCmdPath<BlockWAUCommand>(path: message => {
-                NTMiner.Windows.WindowsUtil.BlockWAU().ContinueWith(t => {
-                    if (t.Exception == null) {
-                        VirtualRoot.ThisLocalInfo(nameof(App), "禁用windows系统更新成功", OutEnum.Success);
-                    }
-                    else {
-                        VirtualRoot.ThisLocalError(nameof(App), "禁用windows系统更新失败", OutEnum.Error);
-                    }
-                });
-            }, location: this.GetType());
-            #endregion
-            #region 优化windows
-            VirtualRoot.BuildCmdPath<Win10OptimizeCommand>(path: message => {
-                NTMiner.Windows.WindowsUtil.Win10Optimize(e => {
-                    if (e == null) {
-                        VirtualRoot.ThisLocalInfo(nameof(App), "优化Windows成功", OutEnum.Success);
-                    }
-                    else {
-                        VirtualRoot.ThisLocalError(nameof(App), "优化Windows失败", OutEnum.Error);
-                    }
-                });
-            }, location: this.GetType());
             #endregion
             #region 处理开启A卡计算模式
             VirtualRoot.BuildCmdPath<SwitchRadeonGpuCommand>(path: message => {
@@ -286,35 +241,6 @@ namespace NTMiner {
             VirtualRoot.BuildCmdPath<AtikmdagPatcherCommand>(path: message => {
                 if (AdlHelper.IsHasATIGpu) {
                     AppRoot.OpenAtikmdagPatcher();
-                }
-            }, location: this.GetType());
-            #endregion
-            #region 启用或禁用windows远程桌面
-            VirtualRoot.BuildCmdPath<EnableRemoteDesktopCommand>(path: message => {
-                if (NTMinerRegistry.GetIsRdpEnabled()) {
-                    return;
-                }
-                string msg = "确定启用Windows远程桌面吗？";
-                DialogWindow.ShowSoftDialog(new DialogWindowViewModel(
-                    message: msg,
-                    title: "确认",
-                    onYes: () => {
-                        NTMinerRegistry.SetIsRdpEnabled(true);
-                        Firewall.AddRdpRule();
-                    }));
-            }, location: this.GetType());
-            #endregion
-            #region 启用或禁用windows开机自动登录
-            VirtualRoot.BuildCmdPath<EnableOrDisableWindowsAutoLoginCommand>(path: message => {
-                if (NTMiner.Windows.OS.Instance.IsAutoAdminLogon) {
-                    return;
-                }
-                if (NTMiner.Windows.OS.Instance.IsGEWindows2004) {
-                    WindowsAutoLogon.ShowWindow();
-                }
-                else {
-                    VirtualRoot.Execute(new UnTopmostCommand());
-                    NTMiner.Windows.Cmd.RunClose("control", "userpasswords2");
                 }
             }, location: this.GetType());
             #endregion

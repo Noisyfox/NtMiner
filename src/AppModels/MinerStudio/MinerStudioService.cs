@@ -52,28 +52,8 @@ namespace NTMiner.MinerStudio {
             Service.GetLocalMessagesAsync(client, afterTime);
         }
 
-        public void EnableRemoteDesktopAsync(IMinerData client) {
-            Service.EnableRemoteDesktopAsync(client);
-        }
-
-        public void BlockWAUAsync(IMinerData client) {
-            Service.BlockWAUAsync(client);
-        }
-
         public void SwitchRadeonGpuAsync(IMinerData client, bool on) {
             Service.SwitchRadeonGpuAsync(client, on);
-        }
-
-        public void RestartWindowsAsync(IMinerData client) {
-            Service.RestartWindowsAsync(client);
-        }
-
-        public void ShutdownWindowsAsync(IMinerData client) {
-            Service.ShutdownWindowsAsync(client);
-        }
-
-        public void SetAutoBootStartAsync(IMinerData client, SetAutoBootStartRequest request) {
-            Service.SetAutoBootStartAsync(client, request);
         }
 
         public void StartMineAsync(IMinerData client, Guid workId) {

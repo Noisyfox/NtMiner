@@ -42,7 +42,6 @@ namespace NTMiner {
                 // 因为登录窗口会用到VirtualRoot.Out，而Out的延迟自动关闭消息会用到倒计时
                 VirtualRoot.StartTimer(new WpfTimingEventProducer());
                 NotiCenterWindow.ShowWindow();
-                AppRoot.RemoteDesktop = MsRdpRemoteDesktop.OpenRemoteDesktop;
                 MinerStudioRoot.Login(() => {
                     MinerStudioRoot.Init(new MinerStudioWsClient());
                     _ = MinerStudioService.Instance;// 访问一下从而提前拉取本地服务数据

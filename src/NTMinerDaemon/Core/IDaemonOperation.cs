@@ -6,16 +6,12 @@ namespace NTMiner.Core {
     public interface IDaemonOperation {
         bool IsNTMinerOpened();
         void CloseDaemon();
-        ResponseBase EnableRemoteDesktop();
-        ResponseBase BlockWAU();
         ResponseBase SwitchRadeonGpu(bool on);
         string GetSelfWorkLocalJson();
         bool SaveSelfWorkLocalJson(WorkRequest request);
         string GetGpuProfilesJson();
-        ResponseBase RestartWindows();
         bool SaveGpuProfilesJson(string json);
         bool SetAutoBootStart(bool autoBoot, bool autoStart);
-        ResponseBase ShutdownWindows();
         ResponseBase StartMine(WorkRequest request);
         ResponseBase StopMine();
         ResponseBase UpgradeNTMiner(UpgradeNTMinerRequest request);

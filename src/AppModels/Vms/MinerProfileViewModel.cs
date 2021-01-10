@@ -1038,15 +1038,5 @@ namespace NTMiner.Vms {
                 return IsMining || IsWorker;
             }
         }
-
-        public bool IsAutoReboot {
-            get {
-                return Windows.Crash.GetAutoReboot();
-            }
-            set {
-                Windows.Crash.SetAutoReboot(value);
-                OnPropertyChanged(nameof(IsAutoBoot));
-            }
-        }
     }
 }

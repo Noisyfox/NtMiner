@@ -108,8 +108,6 @@
     <Compile Include="MinerStudio\Vms\VirtualMemoryViewModel.cs" />
     <Compile Include="MinerStudio\Vms\WebApiServerStateViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RemoteDesktop\Firewall.cs" />
-    <Compile Include="RemoteDesktop\RdpInput.cs" />
     <Compile Include="SortableExtension.cs" />
     <Compile Include="View\AbstractAppViewFactory.cs" />
     <Compile Include="View\IAppViewFactory.cs" />

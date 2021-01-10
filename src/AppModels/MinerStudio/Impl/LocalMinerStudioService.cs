@@ -113,12 +113,6 @@ namespace NTMiner.MinerStudio.Impl {
         }
         #endregion
 
-        #region EnableRemoteDesktopAsync
-        public void EnableRemoteDesktopAsync(IMinerData client) {
-            RpcRoot.JsonRpc.PostAsync<ResponseBase>(client.GetLocalIp(), NTKeyword.NTMinerDaemonPort, _daemonControllerName, nameof(INTMinerDaemonController.EnableRemoteDesktop), null, null, timeountMilliseconds: 3000);
-        }
-        #endregion
-
         #region GetConsoleOutLinesAsync
         public void GetConsoleOutLinesAsync(IMinerData client, long afterTime) {
             RpcRoot.Client.MinerClientService.GetConsoleOutLinesAsync(client.GetLocalIp(), afterTime, (data, e) => {
@@ -139,29 +133,11 @@ namespace NTMiner.MinerStudio.Impl {
         }
         #endregion
 
-        #region BlockWAUAsync
-        public void BlockWAUAsync(IMinerData client) {
-            RpcRoot.JsonRpc.PostAsync<ResponseBase>(client.GetLocalIp(), NTKeyword.NTMinerDaemonPort, _daemonControllerName, nameof(INTMinerDaemonController.BlockWAU), null, null, timeountMilliseconds: 3000);
-        }
-        #endregion
-
         #region SwitchRadeonGpuAsync
         public void SwitchRadeonGpuAsync(IMinerData client, bool on) {
             RpcRoot.JsonRpc.PostAsync<ResponseBase>(client.GetLocalIp(), NTKeyword.NTMinerDaemonPort, _daemonControllerName, nameof(INTMinerDaemonController.SwitchRadeonGpu), new Dictionary<string, string> {
                 ["on"] = on.ToString()
             }, null, null, timeountMilliseconds: 3000);
-        }
-        #endregion
-
-        #region RestartWindowsAsync
-        public void RestartWindowsAsync(IMinerData client) {
-            RpcRoot.JsonRpc.PostAsync<ResponseBase>(client.GetLocalIp(), NTKeyword.NTMinerDaemonPort, _daemonControllerName, nameof(INTMinerDaemonController.RestartWindows), new object(), null, timeountMilliseconds: 3000);
-        }
-        #endregion
-
-        #region ShutdownWindowsAsync
-        public void ShutdownWindowsAsync(IMinerData client) {
-            RpcRoot.JsonRpc.PostAsync<ResponseBase>(client.GetLocalIp(), NTKeyword.NTMinerDaemonPort, _daemonControllerName, nameof(INTMinerDaemonController.ShutdownWindows), new object(), null, timeountMilliseconds: 3000);
         }
         #endregion
 

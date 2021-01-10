@@ -13,12 +13,7 @@ namespace NTMiner.MinerStudio {
         void GetConsoleOutLinesAsync(IMinerData client, long afterTime);
         void GetLocalMessagesAsync(IMinerData client, long afterTime);
 
-        void EnableRemoteDesktopAsync(IMinerData client);
-        void BlockWAUAsync(IMinerData client);
         void SwitchRadeonGpuAsync(IMinerData client, bool on);
-        void RestartWindowsAsync(IMinerData client);
-        void ShutdownWindowsAsync(IMinerData client);
-        void SetAutoBootStartAsync(IMinerData client, SetAutoBootStartRequest request);
         void StartMineAsync(IMinerData client, Guid workId);
         void StopMineAsync(IMinerData client);
         void UpgradeNTMinerAsync(IMinerData client, string ntminerFileName);

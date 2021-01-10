@@ -223,13 +223,6 @@
     <Compile Include="Core\MinerStudio\Impl\UserAppSettingSet.cs" />
     <Compile Include="Core\MinerStudio\IUserAppSettingSet.cs" />
     <Compile Include="SysDicItemSetExtension.cs" />
-    <Compile Include="Windows\BcdEdit.cs" />
-    <Compile Include="Windows\Crash.cs" />
-    <Compile Include="Windows\Defender.cs" />
-    <Compile Include="Windows\Error.cs" />
-    <Compile Include="Windows\Power.cs" />
-    <Compile Include="Windows\UAC.cs" />
-    <Compile Include="Windows\WAU.cs" />
     <Compile Include="Windows\Bios.cs" />
     <Compile Include="Windows\WindowsSessionSwitchReason.cs" />
     <Compile Include="Windows\WMI.cs" />

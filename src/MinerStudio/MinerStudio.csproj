@@ -132,7 +132,6 @@
       <Link>Ws\WebSocketStateExtensions.cs</Link>
     </Compile>
     <Compile Include="App.xaml.cs" />
-    <Compile Include="MsRdpRemoteDesktop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
